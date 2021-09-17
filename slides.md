@@ -57,8 +57,8 @@ Pourquoi et comment ?
 
 <v-clicks>
 
-- **Géneration statique (et incrémentale)**
 - **Routing**
+- **Géneration statique (et incrémentale)**
 - **API**
 - **Rewrites redirect, custom headers CSP**
 - **Head**
@@ -70,17 +70,6 @@ Pourquoi et comment ?
 
 ---
 
-## Géneration statique (et incrémentale)
-
-/data
-
-prechauffe des liens
-
-prégen
-
-
----
-
 ## Routing
 
 ### Folder driven
@@ -89,19 +78,56 @@ Un fichier = une route
 
 src/pages
 
- ↳ index.tsx              /
+ ↳ index.tsx                   /
 
- ↳ about.tsx              /about
+ ↳ about.tsx                   /about
 
- ↳ posts/index.tsx        /posts
+ ↳ characters/index.tsx        /characters
 
- ↳ posts/[id].tsx         /posts/123
+ ↳ characters/[id].tsx         /characters/123
 
- ↳ [...slug].tsx          /whatever-blabla
+ ↳ [...slug].tsx               /whatever-blabla
 
 ### Pages d'erreur
 
 Templates de 4XX, 5XX personnalisables au même titre que les autres pages 
+
+---
+
+## Géneration statique (et incrémentale)
+
+Différentes facon de faire
+
+![Remote Image](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0ddb1934-cbbb-4ea4-8a76-b7501fc78a7e%2FScreenshot_2020-05-20_at_19.03.36.png?table=block&id=33cd2f32-4b2f-4bb6-9f13-a0e3e4e0c5f8&spaceId=a1bf93e4-d3ed-4bef-b7e7-a1181abf225b&width=1540&userId=82bf6ebc-5bea-43d6-97ac-9d8846177cc4&cache=v2)
+
+
+---
+
+## Géneration statique (et incrémentale)
+
+Sur une page avec du contenu dynamique, exporter une méthode.
+
+```tsx {6-11}
+const Blog = ({ posts }) => 
+    <ul>
+        {posts.map((post) => <li>{post.title}</li>)}
+    </ul>
+
+export async function getStaticProps(context) {
+    const posts = fetch('/posts')
+    return {
+        props: { posts },
+        revalidate: false, // Optionnel
+    }
+}
+```
+
+Généré au build
+
+Coté client, quand le HTML devient SPA, on ne recharge plus la page, seule la data est fetch
+
+Le endpoint interne `/_next/data` est appelé pour exécuter cette méthode et répond du JSON.
+
 
 ---
 
@@ -251,20 +277,24 @@ Surcharge du head/metas/title au niveau page (Bonus : Utilisation de NextSEO pou
 
 ---
 
-# Limitations
+# Retour d'expérience
 
-- SSR : code react sans window,
-- Build time config par defaut => react env
-- Server code removing
+- SSR : code react sans window
+  - Des réflexes à prendre, notamment pour le responsive
+- Build time config par defaut => 
+    - Contournement avec `react-env`
+- Suppression du code serveur à prendre en compte
+  - Car notre app est full-stack
+- Prégénération des pages en grand nombre
 
 ---
 
-# Code
+# Ecosystème
 
-Une boite derriere
-Dev très actif (react 18 en cours d’implem)
-Commu hyperactive
-Docs quali et interactive
+- Une boite derriere avec une équipe à plein de dessus : Vercel
+- Dev très actif (react 18 en cours d’implem)
+- Commu hyperactive (voir les exemples)
+- Docs de qualité et interactives
 
 ---
 
