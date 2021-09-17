@@ -156,16 +156,54 @@ const headers = [{
 
 ---
 
-## Image optim @lucien
+## Image optim
+
+### Image locale
+```tsx
+      <Image src={profilePic} alt="Picture of the author" />
+```
+
+### Image distante
+```tsx
+      <Image 
+        src={"https://thumbor.meilleursagents.com/oNKMEA-KsOPNUUe5BxHq2gThxrQ=/120x80/filters:watermark(realtor.png,center,center,0)/f9f9f9"} 
+        alt="Une image thumbor"
+        width={120}
+        height={80}
+        placeholder="blur"
+        blurDataUrl="https://blur.com/image.jpeg"
+        // layout="fill"
+        // objectFit="cover"
+        // objectPosition="center"
+        // quality="90"
+        // priority={false}
+      />
+```
+
+[https://drive.google.com/drive/u/0/folders/1SLX9T3M7O1B7290gNRX8WyMvHrtJfu_z](Live demo)
 
 ---
 
-## Polyfill injecté automatique @lucien
+## Polyfill injecté automatique
 
+[https://drive.google.com/drive/u/0/folders/1SLX9T3M7O1B7290gNRX8WyMvHrtJfu_z](Live demo)
+
+```tsx
+    <Script
+        src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserverEntry%2CIntersectionObserver"
+        strategy="beforeInteractive"
+    />
+```
+
+### 
 ---
 
 ## Sentry @lucien
 
+![Local Image](/img.png)
+- Config simple (Server/Client)
+- Combine @sentry/webpack @sentry/node @sentry/browser
+- Optimisations + upload des source-maps
 ---
 
 # Coté tooling
