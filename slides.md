@@ -23,7 +23,7 @@ drawings:
 
 # NextJS
 
-Pourquoi chez nous
+Pourquoi et comment ?
 
 ---
 
@@ -46,7 +46,8 @@ Pourquoi chez nous
 - React
 - SSR
 - On aime l'experience de dev
-- Acteur majeur sur le marché du React SSR
+- Acteur majeur sur le marché du React SSR 
+- Des optims des perfs faciles (Pour respected les Core Web Vitals)
 
 </v-clicks>
 
@@ -82,8 +83,25 @@ prégen
 
 ## Routing
 
-Folder driven
-Pages d'erreur
+### Folder driven
+
+Un fichier = une route
+
+src/pages
+
+ ↳ index.tsx              /
+
+ ↳ about.tsx              /about
+
+ ↳ posts/index.tsx        /posts
+
+ ↳ posts/[id].tsx         /posts/123
+
+ ↳ [...slug].tsx          /whatever-blabla
+
+### Pages d'erreur
+
+Templates de 4XX, 5XX personnalisables au même titre que les autres pages 
 
 ---
 
@@ -153,6 +171,24 @@ const headers = [{
 ---
 
 ## Head
+
+Surcharge du head/metas/title au niveau page (Bonus : Utilisation de NextSEO pour simplifier)
+
+```tsx
+<NextSeo
+    description={translate(
+        'Comparez et choisissez votre agence immobilière selon ses ventes récentes, ses avis clients et sa proximité avec votre bien',
+    )}
+    openGraph={{
+        title: translate('Comparateur d’agences immobilières'),
+        description: translate(
+            'Comparez et choisissez votre agence immobilière selon ses ventes récentes, ses avis clients et sa proximité avec votre bien',
+        ),
+        url: 'https://www.meilleursagents.com/professionnel-immobilier/',
+    }}
+    title={translate('Comparateur d’agences immobilières')}
+/>
+```
 
 ---
 
