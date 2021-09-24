@@ -33,7 +33,7 @@ Pourquoi et comment ?
 
 - Framework React
 - SSR friendly, serveur Node pour la production
-- Page driven structure
+- Orienté DX et performance
 
 </v-clicks>
 
@@ -47,7 +47,7 @@ Pourquoi et comment ?
 - SSR
 - On aime l'experience de dev
 - Acteur majeur sur le marché du React SSR 
-- Des optims des perfs faciles (Pour respected les Core Web Vitals)
+- Des optims des perfs faciles (Pour respecter les Core Web Vitals)
 
 </v-clicks>
 
@@ -55,18 +55,15 @@ Pourquoi et comment ?
 
 # Qu'est-ce que ca nous apporte ?
 
-<v-clicks>
-
 - **Routing**
 - **Géneration statique (et incrémentale)**
 - **API**
 - **Rewrites redirect, custom headers CSP**
 - **Head**
 - **Image optim @lucien**
+- **Dynamic Loading @lucien**
 - **Polyfill injecté automatique @lucien**
 - **Sentry @lucien**
-
-</v-clicks>
 
 ---
 
@@ -98,7 +95,7 @@ Templates de 4XX, 5XX personnalisables au même titre que les autres pages
 
 Différentes facon de faire
 
-![Remote Image](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0ddb1934-cbbb-4ea4-8a76-b7501fc78a7e%2FScreenshot_2020-05-20_at_19.03.36.png?table=block&id=33cd2f32-4b2f-4bb6-9f13-a0e3e4e0c5f8&spaceId=a1bf93e4-d3ed-4bef-b7e7-a1181abf225b&width=1540&userId=82bf6ebc-5bea-43d6-97ac-9d8846177cc4&cache=v2)
+![Local Image](/build.png)
 
 
 ---
@@ -137,7 +134,7 @@ NextJS fournit une route particulière pour écrire des routes
 
 - Faire une API Rest
 - Un proxy 👀
-- De la validation XHR por un form
+- De la validation XHR pour un form
 
 
 ```ts
@@ -220,14 +217,13 @@ Surcharge du head/metas/title au niveau page (Bonus : Utilisation de NextSEO pou
 
 ## Image optim
 
-### Image locale
 ```tsx
-      <Image src={profilePic} alt="Picture of the author" />
+    <Image src={profilePic} alt="Picture of the author" />
 ```
 
 ### Image distante
 ```tsx
-      <Image 
+    <Image 
         src={"https://thumbor.meilleursagents.com/oNKMEA-KsOPNUUe5BxHq2gThxrQ=/120x80/filters:watermark(realtor.png,center,center,0)/f9f9f9"} 
         alt="Une image thumbor"
         width={120}
@@ -239,28 +235,36 @@ Surcharge du head/metas/title au niveau page (Bonus : Utilisation de NextSEO pou
         // objectPosition="center"
         // quality="90"
         // priority={false}
-      />
+    />
 ```
 
-[https://drive.google.com/drive/u/0/folders/1SLX9T3M7O1B7290gNRX8WyMvHrtJfu_z](Live demo)
+<a href="https://drive.google.com/file/d/167la-8yyXYuf_SXtRwABsC3pVSMETi7Y/view">Live demo</a>
+
+---
+
+## Dynamic Loading
+
+Chargement de composants en fonction du scroll
+
+<a href="https://drive.google.com/file/d/1Mf_1POjml_oX2EId1qj-SV-4R5iCE7r3/view">Live demo</a>
 
 ---
 
 ## Polyfill injecté automatique
 
-[https://drive.google.com/drive/u/0/folders/1SLX9T3M7O1B7290gNRX8WyMvHrtJfu_z](Live demo)
-
 ```tsx
-    <Script
-        src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserverEntry%2CIntersectionObserver"
-        strategy="beforeInteractive"
-    />
+<Script
+    src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserverEntry%2CIntersectionObserver"
+    strategy="beforeInteractive"
+/>
 ```
+
+<a href="https://drive.google.com/file/d/1MDNcZIrXmajolrIwspOFWi_GJ8WaOsZ4/view">Live demo</a>
 
 ### 
 ---
 
-## Sentry @lucien
+## Sentry
 
 ![Local Image](/img.png)
 - Config simple (Server/Client)
@@ -270,7 +274,7 @@ Surcharge du head/metas/title au niveau page (Bonus : Utilisation de NextSEO pou
 
 # Coté tooling
 
-- 0 config par design, mais configurable, surcharge complète de l'objet webpack
+- 0 config de nature, mais configurable, surcharge complète de l'objet webpack
 - Linter eslint avec les rules Core Webvitals et A11Y par défaut
 - Alias sur les chemins d'import. Ex : `@/images/cat.gif`
 - Abstraction de `fetch()` pour une utilisation universelle
@@ -291,9 +295,9 @@ Surcharge du head/metas/title au niveau page (Bonus : Utilisation de NextSEO pou
 
 # Ecosystème
 
-- Une boite derriere avec une équipe à plein de dessus : Vercel
-- Dev très actif (react 18 en cours d’implem)
-- Commu hyperactive (voir les exemples)
+- Une boite derrière avec une équipe à plein temps de dessus : Vercel
+- Dévelopement très actif (react 18 en cours d’implementation)
+- Communauté hyperactive (voir les exemples)
 - Docs de qualité et interactives
 
 ---
@@ -308,4 +312,14 @@ Surcharge du head/metas/title au niveau page (Bonus : Utilisation de NextSEO pou
 
 # Merci
 
+Join us
 
+![Local Image](/join-us.gif)
+
+---
+
+P.S. : 
+
+Fait avec Sli.dev, MarkDown based, en VueJS
+
+Plus simple que Spectacle (L'alternative React) mais moins mature en features
